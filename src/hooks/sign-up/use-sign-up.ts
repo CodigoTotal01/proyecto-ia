@@ -76,6 +76,8 @@ export const useSignUpForm = () => {
             values.type,
           );
 
+          console.log(registered);
+
           if (registered?.status === 200 && registered.user) {
             await setActive({
               session: completeSignUp.createdSessionId,
@@ -93,6 +95,7 @@ export const useSignUpForm = () => {
           }
         }
       } catch (error: any) {
+        console.log(error)
         toast({
           title: "Error",
           description: error.errors[0].longMessage,

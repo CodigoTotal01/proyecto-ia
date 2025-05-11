@@ -8,6 +8,10 @@ export const onCompleteUserRegistration = async (
   type: string,
 ) => {
   try {
+    console.log("DAtos que bienen de clear para registrarlo en la base de datos al cliente: ");
+    console.log("clerkId", clerkId);
+    console.log("fullname", fullname);
+    console.log("type", type);
     const registered = await client.user.create({
       data: {
         fullname,
@@ -28,6 +32,7 @@ export const onCompleteUserRegistration = async (
       return { status: 200, user: registered };
     }
   } catch (error: any) {
+    console.log("Error al registrar el usuario en la base de datos");
     return { status: 400 };
   }
 };

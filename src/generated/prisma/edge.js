@@ -280,11 +280,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://kobu-ia_owner:npg_8tKcida5YMFv@ep-dry-silence-a4p96604-pooler.us-east-1.aws.neon.tech/kobu-ia?sslmode=require"
+        "value": null
       }
     }
   },
