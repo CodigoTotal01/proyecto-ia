@@ -1,17 +1,14 @@
-import {clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
-
-//Routes that do not require authentication
-const isProtectedRoute = createRouteMatcher([
-  '/',
+const isPublicRoute = createRouteMatcher(['/',
   '/auth(.*)',
-  '/portal(.*)',
-]);
-
+  '/portal(.*)'])
 
 export default clerkMiddleware(async (auth, req) => {
-  if (isProtectedRoute(req)) await auth.protect();
-});
+  if (!isPublicRoute(req)) {
+    await auth.protect()
+  }
+})
 
 export const config = {
   matcher: [
@@ -20,4 +17,4 @@ export const config = {
     // Always run for API routes
     '/(api|trpc)(.*)',
   ],
-};
+}
